@@ -1,0 +1,58 @@
+.table-container {
+  padding: 30px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+}
+.product-form {
+  background: #fff;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+}
+
+.product-form input,
+.product-form textarea {
+  width: 100%;
+  margin: 8px 0;
+  padding: 10px;
+}
+
+.product-form button {
+  background: black;
+  color: white;
+  padding: 10px 16px;
+  border: none;
+  cursor: pointer;
+}
+
+button.danger {
+  background: #d9534f;
+  color: white;
+  margin-left: 8px;
+}
+.status {
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  color: white;
+}
+
+.status.new {
+  background: #0275d8;
+}
+
+.status.contacted {
+  background: #f0ad4e;
+}
+
+.status.completed {
+  background: #5cb85c;
+}

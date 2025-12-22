@@ -1,7 +1,17 @@
-import "../styles/home.css";
+import { useEffect, useState } from "react";
+import { getProducts } from "../services/api";
 import ProductCard from "../components/product/ProductCard";
+import "../styles/home.css";
 
 const Home = () => {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    getProducts()
+      .then(res => setProducts(res.data))
+      .catch(err => console.error(err));
+  }, []);
+
   return (
     <div className="home">
       <section className="hero">
@@ -10,10 +20,9 @@ const Home = () => {
       </section>
 
       <section className="products">
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
+        {products.map(p => (
+          <ProductCard key={p._id} product={p} />
+        ))}
       </section>
     </div>
   );

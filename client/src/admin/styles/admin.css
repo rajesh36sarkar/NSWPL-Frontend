@@ -1,0 +1,28 @@
+.admin-login {
+  height: 100vh;
+  display: grid;
+  place-items: center;
+  background: #f4f6f8;
+}
+
+.admin-login form {
+  background: white;
+  padding: 40px;
+  width: 320px;
+  border-radius: 10px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+}
+
+.admin-login input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+}
+
+.admin-login button {
+  width: 100%;
+  padding: 10px;
+  background: black;
+  color: white;
+  border: none;
+}
