@@ -1,8 +1,9 @@
 .footer {
   background: #262626;
-  color: #ddd;
-  padding: 60px 20px 20px;
-  animation: fadeUp 0.8s ease;
+  border-top: 1px solid #333;
+  padding: 40px 20px 20px;   /* ⬅ reduced padding */
+  color: #ccc;
+  font-size: 14px;
 }
 
 .footer-container {
@@ -10,118 +11,131 @@
   margin: auto;
 }
 
-/* TOP */
+/* ================= TOP (Newsletter) ================= */
 .footer-top {
   display: flex;
   justify-content: space-between;
-  gap: 30px;
+  align-items: center;
+  gap: 20px;
   flex-wrap: wrap;
+  margin-bottom: 30px;
 }
 
 .footer-top-left h4 {
-  color: white;
-  margin-bottom: 10px;
+  color: #fff;
+  font-size: 16px;          /* ⬅ smaller */
+  margin-bottom: 6px;
+  font-weight: 500;
 }
 
 .footer-top-left p {
-  color: #aaa;
-  max-width: 420px;
+  color: #999;
+  font-size: 13px;
+  max-width: 380px;
+  line-height: 1.4;
 }
 
-.footer-top-right {
+/* Small minimal input */
+.footer-search {
   display: flex;
-  gap: 10px;
+  align-items: center;
+  border-bottom: 1px solid #555;
+  padding-bottom: 4px;
+  width: 220px;             /* ⬅ smaller */
 }
 
-.footer-top-right input {
-  padding: 12px;
+.footer-search input {
+  flex: 1;
+  background: transparent;
   border: none;
-  width: 260px;
+  outline: none;
+  color: #fff;
+  font-size: 13px;
 }
 
-.footer-top-right button {
-  background: #bd744c;
-  color: white;
+.footer-search input::placeholder {
+  color: #777;
+}
+
+.footer-search button {
+  background: transparent;
   border: none;
-  padding: 12px 22px;
+  color: #bd744c;
+  font-size: 16px;
   cursor: pointer;
-  transition: background 0.3s ease;
 }
 
-.footer-top-right button:hover {
-  background: #a5623f;
-}
-
-/* MAIN */
+/* ================= MAIN ================= */
 .footer-main {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr 1fr;
-  gap: 40px;
-  margin: 50px 0;
+  gap: 30px;                /* ⬅ tighter */
+  margin: 30px 0;
 }
 
 .footer-brand h3 {
-  color: white;
+  font-size: 16px;
+  font-weight: 500;
+  color: #fff;
 }
 
 .footer-brand p {
-  color: #aaa;
-  margin: 15px 0;
+  font-size: 13px;
+  color: #999;
+  margin-top: 8px;
+  max-width: 280px;
+  line-height: 1.5;
 }
 
+/* SOCIALS – subtle */
 .footer-socials {
   display: flex;
-  gap: 12px;
+  gap: 10px;
+  margin-top: 12px;
 }
 
 .footer-socials a {
-  width: 36px;
-  height: 36px;
-  border: 1px solid #555;
-  display: grid;
-  place-items: center;
-  color: white;
-  transition: transform 0.3s ease, background 0.3s ease;
+  font-size: 16px;
+  color: #aaa;
+  transition: color 0.3s ease;
 }
 
 .footer-socials a:hover {
-  background: #bd744c;
-  transform: translateY(-4px);
+  color: #bd744c;
 }
 
+/* ================= LINKS ================= */
 .footer-links h5 {
-  color: white;
-  margin-bottom: 15px;
+  font-size: 13px;
+  margin-bottom: 10px;
+  color: #fff;
+  font-weight: 500;
 }
 
 .footer-links a {
   display: block;
-  color: #aaa;
-  margin-bottom: 10px;
+  font-size: 13px;
+  color: #999;
+  margin-bottom: 6px;
   text-decoration: none;
-  transition: color 0.3s ease, transform 0.3s ease;
+  transition: color 0.3s ease;
 }
 
 .footer-links a:hover {
-  color: white;
-  transform: translateX(4px);
+  color: #fff;
 }
 
-/* BOTTOM */
+/* ================= BOTTOM ================= */
 .footer-bottom {
-  text-align: center;
-  color: #888;
-  padding-top: 15px;
-  font-size: 14px;
-}
-
-/* HR */
-.footer hr {
-  border: none;
+  margin-top: 25px;
+  padding-top: 12px;
   border-top: 1px solid #333;
+  text-align: center;
+  font-size: 12px;
+  color: #777;
 }
 
-/* RESPONSIVE */
+/* ================= RESPONSIVE ================= */
 @media (max-width: 900px) {
   .footer-main {
     grid-template-columns: 1fr 1fr;
@@ -129,12 +143,12 @@
 }
 
 @media (max-width: 600px) {
-  .footer-top-right {
+  .footer-top {
     flex-direction: column;
-    width: 100%;
+    text-align: center;
   }
 
-  .footer-top-right input {
+  .footer-search {
     width: 100%;
   }
 
@@ -145,17 +159,5 @@
 
   .footer-socials {
     justify-content: center;
-  }
-}
-
-/* ANIMATION */
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
   }
 }

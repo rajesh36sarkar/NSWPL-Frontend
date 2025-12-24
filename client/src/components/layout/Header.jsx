@@ -1,49 +1,49 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import { IoSearchOutline, IoCartOutline } from "react-icons/io5";
 import "../../styles/header.css";
-import { IoSearch } from "react-icons/io5";
-import { IoCartOutline } from "react-icons/io5";
 
 const Header = () => {
   return (
     <header className="site-header">
-      <div className="container header-inner">
-        <h2 className="logo">
-          <Link to="/" style={{ textDecoration: "none", color: "inherit" }}>
-            Nandita
-          </Link>
-        </h2>
+      <div className="header-container">
 
-        <nav className="nav-links">
-          <Link to="/">Home</Link>
+        {/* BRAND */}
+        <div className="brand">
+          <span className="brand-icon">✎</span>
+          <Link to="/" className="brand-name">Nandita</Link>
+        </div>
 
-          <div className="dropdown">
+        {/* NAV */}
+        <nav className="nav">
+          <NavLink to="/">Home</NavLink>
+
+          <div className="nav-item dropdown">
             <span>Pages</span>
             <div className="dropdown-menu">
-              <Link to="/blog">About Us</Link>
-              <Link to="/blog">About Team</Link>
-              <Link to="/blog">FAQ</Link>
-              <Link to="/blog">404</Link>
-              <Link to="/blog">Wishlist</Link>
-              <Link to="/blog">Login</Link>
+              <NavLink to="/about">About Us</NavLink>
+              <NavLink to="/team">Team</NavLink>
+              <NavLink to="/faq">FAQ</NavLink>
+              <NavLink to="/wishlist">Wishlist</NavLink>
             </div>
           </div>
 
-          <div className="dropdown">
+          <div className="nav-item dropdown">
             <span>Shop</span>
             <div className="dropdown-menu">
-              <Link to="/shop">Shop</Link>
-              <Link to="/categories">Categories</Link>
-              {/* <Link to="/accoount">Accoount</Link> */}
+              <NavLink to="/shop">Shop</NavLink>
+              <NavLink to="/categories">Categories</NavLink>
             </div>
           </div>
 
-          <Link to="/contact">Contact</Link>
-
-          <div>
-            <IoSearch />
-            <IoCartOutline />
-          </div>
+          <NavLink to="/contact">Contact</NavLink>
         </nav>
+
+        {/* ACTIONS */}
+        <div className="header-actions">
+          <IoSearchOutline />
+          <IoCartOutline />
+        </div>
+
       </div>
     </header>
   );

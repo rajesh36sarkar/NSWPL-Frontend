@@ -1,4 +1,10 @@
 import { Link } from "react-router-dom";
+import {
+  SlSocialFacebook,
+  SlSocialInstagram,
+  SlSocialYoutube,
+} from "react-icons/sl";
+import { AiOutlineWhatsApp } from "react-icons/ai";
 import "../../styles/footer.css";
 
 const Footer = () => {
@@ -6,73 +12,66 @@ const Footer = () => {
     <footer className="footer">
       <div className="footer-container">
 
-        {/* TOP NEWSLETTER */}
+        {/* TOP / NEWSLETTER */}
         <div className="footer-top">
           <div className="footer-top-left">
-            <h4>Many desktop publishing</h4>
-            <p>
-              Do you want to receive exclusive email offers? Subscribe to our
-              newsletter and get special discounts on our products.
-            </p>
+            <h4>Newsletter</h4>
+            <p>Get updates about new products and special offers.</p>
           </div>
 
-          <div className="footer-top-right">
-            <input type="email" placeholder="Enter your email" />
-            <button>Subscribe</button>
+          {/* SMALL FLATLOGIC STYLE SEARCH */}
+          <div className="footer-search">
+            <input type="email" placeholder="Your email" />
+            <button aria-label="Subscribe">→</button>
           </div>
         </div>
 
         <hr />
 
-        {/* MAIN FOOTER */}
+        {/* MAIN */}
         <div className="footer-main">
-
-          {/* BRAND */}
           <div className="footer-brand">
-            <h3>Netai Stationery</h3>
+            <h3>Netai Stationery Works Pvt. Ltd.</h3>
             <p>
-              High quality notebooks, custom printing and premium stationery
-              products for professionals and students.
+              Premium stationery, notebooks, and custom printing solutions for
+              students, professionals, and businesses.
             </p>
 
             <div className="footer-socials">
-              <a href="https://google.com" target="_blank" rel="noreferrer">G</a>
-              <a href="https://twitter.com" target="_blank" rel="noreferrer">T</a>
-              <a href="https://linkedin.com" target="_blank" rel="noreferrer">L</a>
-              <a href="https://facebook.com" target="_blank" rel="noreferrer">F</a>
+              <a href="#" aria-label="Facebook"><SlSocialFacebook /></a>
+              <a href="#" aria-label="Instagram"><SlSocialInstagram /></a>
+              <a href="#" aria-label="YouTube"><SlSocialYoutube /></a>
+              <a href="#" aria-label="WhatsApp"><AiOutlineWhatsApp /></a>
             </div>
           </div>
 
-          {/* LINKS */}
           <div className="footer-links">
             <h5>Company</h5>
-            <Link to="/about">What We Do</Link>
-            <Link to="/services">Available Services</Link>
-            <Link to="/blog">Latest Posts</Link>
+            <Link to="/about">About Us</Link>
+            <Link to="/services">Services</Link>
             <Link to="/faq">FAQs</Link>
           </div>
 
           <div className="footer-links">
             <h5>My Account</h5>
-            <Link to="/admin/login">Sign In</Link>
-            <Link to="/orders">Order Tracking</Link>
-            <Link to="/support">Help & Support</Link>
+            <Link to="/admin/login">Login</Link>
+            <Link to="/orders">Orders</Link>
+            <Link to="/wishlist">Wishlist</Link>
           </div>
 
           <div className="footer-links">
-            <h5>Customer Service</h5>
-            <Link to="/contact">Help & Contact Us</Link>
-            <Link to="/returns">Returns & Refunds</Link>
+            <h5>Support</h5>
+            <Link to="/contact">Contact</Link>
+            <Link to="/returns">Returns</Link>
             <Link to="/terms">Terms & Conditions</Link>
           </div>
-
         </div>
 
         <hr />
 
         {/* BOTTOM */}
         <div className="footer-bottom">
-          © 2025 Netai Stationery. All rights reserved.
+          © {new Date().getFullYear()} Netai Stationery Works Pvt. Ltd. All rights reserved.
         </div>
 
       </div>
