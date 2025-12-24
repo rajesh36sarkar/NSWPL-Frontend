@@ -1,6 +1,9 @@
 .table-container {
-  padding: 30px;
+  padding: 20px;
+  height: calc(100vh - 64px); /* header height */
+  overflow-y: auto;
 }
+
 
 table {
   width: 100%;
@@ -55,4 +58,11 @@ button.danger {
 
 .status.completed {
   background: #5cb85c;
+}
+
+select {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  cursor: pointer;
 }

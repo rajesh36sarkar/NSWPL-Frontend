@@ -1,0 +1,161 @@
+.footer {
+  background: #262626;
+  color: #ddd;
+  padding: 60px 20px 20px;
+  animation: fadeUp 0.8s ease;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* TOP */
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.footer-top-left h4 {
+  color: white;
+  margin-bottom: 10px;
+}
+
+.footer-top-left p {
+  color: #aaa;
+  max-width: 420px;
+}
+
+.footer-top-right {
+  display: flex;
+  gap: 10px;
+}
+
+.footer-top-right input {
+  padding: 12px;
+  border: none;
+  width: 260px;
+}
+
+.footer-top-right button {
+  background: #bd744c;
+  color: white;
+  border: none;
+  padding: 12px 22px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.footer-top-right button:hover {
+  background: #a5623f;
+}
+
+/* MAIN */
+.footer-main {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 40px;
+  margin: 50px 0;
+}
+
+.footer-brand h3 {
+  color: white;
+}
+
+.footer-brand p {
+  color: #aaa;
+  margin: 15px 0;
+}
+
+.footer-socials {
+  display: flex;
+  gap: 12px;
+}
+
+.footer-socials a {
+  width: 36px;
+  height: 36px;
+  border: 1px solid #555;
+  display: grid;
+  place-items: center;
+  color: white;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.footer-socials a:hover {
+  background: #bd744c;
+  transform: translateY(-4px);
+}
+
+.footer-links h5 {
+  color: white;
+  margin-bottom: 15px;
+}
+
+.footer-links a {
+  display: block;
+  color: #aaa;
+  margin-bottom: 10px;
+  text-decoration: none;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: white;
+  transform: translateX(4px);
+}
+
+/* BOTTOM */
+.footer-bottom {
+  text-align: center;
+  color: #888;
+  padding-top: 15px;
+  font-size: 14px;
+}
+
+/* HR */
+.footer hr {
+  border: none;
+  border-top: 1px solid #333;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .footer-main {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .footer-top-right {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .footer-top-right input {
+    width: 100%;
+  }
+
+  .footer-main {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .footer-socials {
+    justify-content: center;
+  }
+}
+
+/* ANIMATION */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

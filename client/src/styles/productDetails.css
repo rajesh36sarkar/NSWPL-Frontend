@@ -1,3 +1,13 @@
+
+.info button {
+  padding: 12px 20px;
+  background: black;
+  color: white;
+  border: none;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
 .product-details {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -14,11 +24,33 @@
   font-size: 32px;
 }
 
-.info button {
-  padding: 12px 20px;
+.order-form {
+  margin-top: 30px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.order-form input {
+  width: 100%;
+  margin: 8px 0;
+  padding: 10px;
+}
+
+.order-form button {
   background: black;
   color: white;
+  padding: 10px;
   border: none;
-  margin-top: 20px;
   cursor: pointer;
+}
+
+.order-form button:hover {
+  opacity: 0.9;
+}
+
+@media (max-width: 768px) {
+  .product-details {
+    grid-template-columns: 1fr;
+  }
 }

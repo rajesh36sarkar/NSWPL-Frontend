@@ -5,9 +5,9 @@ import "../styles/table.css";
 const Orders = () => {
   const [orders, setOrders] = useState([]);
 
-  useEffect(() => {
-    const token = localStorage.getItem("adminToken");
+  const token = localStorage.getItem("adminToken");
 
+  useEffect(() => {
     axios
       .get("http://localhost:5000/api/orders", {
         headers: {
@@ -16,7 +16,30 @@ const Orders = () => {
       })
       .then((res) => setOrders(res.data))
       .catch((err) => console.error(err));
-  }, []);
+  }, [token]);
+
+  const handleStatusChange = async (orderId, newStatus) => {
+    try {
+      await axios.put(
+        `http://localhost:5000/api/orders/${orderId}/status`,
+        { status: newStatus },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      // update UI instantly
+      setOrders((prev) =>
+        prev.map((o) =>
+          o._id === orderId ? { ...o, status: newStatus } : o
+        )
+      );
+    } catch (error) {
+      console.error("Failed to update status", error);
+    }
+  };
 
   return (
     <div className="table-container">
@@ -42,9 +65,16 @@ const Orders = () => {
               <td>{o.productName}</td>
               <td>{o.quantity}</td>
               <td>
-                <span className={`status ${o.status.toLowerCase()}`}>
-                  {o.status}
-                </span>
+                <select
+                  value={o.status}
+                  onChange={(e) =>
+                    handleStatusChange(o._id, e.target.value)
+                  }
+                >
+                  <option value="New">New</option>
+                  <option value="Contacted">Contacted</option>
+                  <option value="Completed">Completed</option>
+                </select>
               </td>
               <td>{new Date(o.createdAt).toLocaleDateString()}</td>
             </tr>
