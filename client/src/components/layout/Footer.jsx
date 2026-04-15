@@ -15,7 +15,7 @@ const Footer = () => {
         {/* TOP / NEWSLETTER */}
         <div className="footer-top">
           <div className="footer-top-left">
-            <h4>Newsletter</h4>
+            <h4>Nandita</h4>
             <p>Get updates about new products and special offers.</p>
           </div>
 
@@ -48,23 +48,34 @@ const Footer = () => {
           <div className="footer-links">
             <h5>Company</h5>
             <Link to="/about">About Us</Link>
-            <Link to="/services">Services</Link>
+            <Link to="/team">Team</Link>
             <Link to="/faq">FAQs</Link>
           </div>
 
           <div className="footer-links">
             <h5>My Account</h5>
             <Link to="/admin/login">Login</Link>
-            <Link to="/orders">Orders</Link>
-            <Link to="/wishlist">Wishlist</Link>
+
+            <Link to="/shop">Shop</Link>
+            <Link to="/categories">Categories</Link>
           </div>
 
           <div className="footer-links">
-            <h5>Support</h5>
-            <Link to="/contact">Contact</Link>
-            <Link to="/returns">Returns</Link>
+            <h5>Others</h5>
+            <Link to="/contact">Help & Contact</Link>
             <Link to="/terms">Terms & Conditions</Link>
+
+            {/* Link of my portfolio */}
+            <a
+              href="https://rajesh36sarkar.github.io/portfolio-page/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Developed by Rajesh Sarkar
+            </a>
           </div>
+
+
         </div>
 
         <hr />

@@ -1,13 +1,68 @@
-import { Navigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { fetchProducts, deleteProduct } from "../api/adminApi";
+import ProductForm from "./ProductForm";
+import "../styles/table.css";
 
-const PrivateRoute = ({ children }) => {
-  const token = localStorage.getItem("adminToken");
+const Products = () => {
+  const [products, setProducts] = useState([]);
+  const [editingProduct, setEditingProduct] = useState(null);
 
-  if (!token) {
-    return <Navigate to="/admin/login" replace />;
-  }
+  const loadProducts = async () => {
+    const { data } = await fetchProducts();
+    setProducts(data);
+  };
 
-  return children;
+  useEffect(() => {
+    loadProducts();
+  }, []);
+
+  const handleDelete = async (id) => {
+    if (!window.confirm("Delete this product?")) return;
+    await deleteProduct(id);
+    loadProducts();
+  };
+
+  return (
+    <div className="table-container">
+      <h3>Products</h3>
+
+      <ProductForm
+        editingProduct={editingProduct}
+        setEditingProduct={setEditingProduct}
+        refresh={loadProducts}
+      />
+
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Category</th>
+            <th width="160">Actions</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {products.map((p) => (
+            <tr key={p._id}>
+              <td>{p.name}</td>
+              <td>₹{p.price}</td>
+              <td>{p.category}</td>
+              <td>
+                <button onClick={() => setEditingProduct(p)}>Edit</button>
+                <button
+                  className="danger"
+                  onClick={() => handleDelete(p._id)}
+                >
+                  Delete
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
 };
 
-export default PrivateRoute;
+export default Products;

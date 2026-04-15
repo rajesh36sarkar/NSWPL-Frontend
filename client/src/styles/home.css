@@ -1,24 +1,275 @@
-.home {
-  padding: 40px;
+/* --- 1. Variables & Global Settings --- */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap');
+
+:root {
+  --blue: #005792;
+  --indigo: #7f3ddb;
+  --purple: #1a86d0;
+  --pink: #e54e9a;
+  --red: #fd5f00;
+  --orange: #ff7d47;
+  --yellow: #fda700;
+  --green: #68ca66;
+  --teal: #21ae8c;
+  --cyan: #17a2b8;
+  --white: #fff;
+  --gray-dark: #3c484f;
+  --primary: #bd744c; /* Brown/Earth Tone from reference */
+  --secondary: #798892;
+  --success: #21ae8c;
+  --info: #1a86d0;
+  --warning: #fda700;
+  --danger: #fd5f00;
+  --light: #f8f9fa;
+  --dark: #3c484f;
+  --bg-promo: #e74c3c; /* Red Promo Color */
 }
 
-.hero {
-  text-align: center;
-  margin-bottom: 50px;
+.home-container {
+  width: 100%;
+  font-family: 'Montserrat', sans-serif;
+  color: var(--dark);
+  font-weight: 300;
+  overflow-x: hidden;
 }
 
-.hero h1 {
-  font-size: 48px;
+/* Helper for content width (max 1400px centered) */
+.content-wrapper {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 60px 20px;
+}
+
+/* --- 2. HERO SLIDER (Full Width) --- */
+.hero-slider-section {
+  position: relative;
+  width: 100%;
+  height: 85vh; /* Tall hero */
+  overflow: hidden;
+  background-color: #000;
+  margin-top: -20px; /* Adjust if using transparent header */
+}
+
+.hero-slide {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  z-index: 1;
+}
+
+.hero-slide.active { opacity: 1; z-index: 2; }
+
+.hero-overlay-dark {
+  background: rgba(0, 0, 0, 0.4);
+  width: 100%; height: 100%;
+  display: flex;
+  align-items: center;
+  padding-left: 10%; /* Text alignment */
+}
+
+.hero-content {
+  max-width: 600px;
+  color: var(--white);
+  animation: slideUp 0.8s ease forwards;
+}
+
+.hero-subtitle {
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--warning); /* Yellow accent */
+  display: inline-block;
+  background: rgba(0,0,0,0.6);
+  padding: 5px 10px;
+  margin-bottom: 15px;
+}
+
+.hero-content h1 {
+  font-size: 4rem;
+  line-height: 1.1;
+  font-weight: 800;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.hero-content p {
+  font-size: 1.3rem;
+  margin-bottom: 35px;
+  font-weight: 400;
+}
+
+.btn-hero {
+  display: inline-block;
+  padding: 15px 40px;
+  background-color: var(--bg-promo);
+  color: white;
+  text-decoration: none;
   font-weight: 600;
+  border-radius: 30px;
+  transition: all 0.3s ease;
 }
 
-.hero p {
-  color: #777;
-  font-size: 18px;
+.btn-hero:hover {
+  background: white;
+  color: var(--bg-promo);
 }
 
-.products {
+/* Dots */
+.slider-dots {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 10;
+}
+
+.dot {
+  width: 12px; height: 12px;
+  background: rgba(255,255,255,0.5);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.dot.active { background: var(--warning); transform: scale(1.2); }
+
+/* --- 3. CATEGORIES --- */
+.categories-section {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 30px;
+}
+
+.cat-card {
+  position: relative;
+  height: 350px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.cat-card img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.cat-card:hover img { transform: scale(1.1); }
+
+.cat-overlay {
+  position: absolute;
+  bottom: 30px; left: 30px;
+  background: var(--white);
+  padding: 20px 30px;
+  min-width: 200px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.cat-overlay h3 { margin: 0 0 5px 0; font-weight: 600; }
+.cat-overlay a { text-decoration: none; color: var(--secondary); text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; }
+
+/* --- 4. BEST SELLERS GRID SYSTEM (The 25% Requirement) --- */
+.section-header { text-align: center; margin-bottom: 50px; }
+.section-header h2 { font-weight: 700; font-size: 2.5rem; margin-bottom: 10px; }
+
+/* Flex Container */
+.products-grid {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -20px; /* Offset gutter */
+  margin-left: -20px;
+  margin-bottom: 40px;
+}
+
+/* The Exact 25% Wrapper */
+.product-card-wrapper {
+  position: relative;
+  width: 100%;
+  padding-right: 20px;
+  padding-left: 20px;
+  box-sizing: border-box;
+  margin-bottom: 1.5rem !important;
+  
+  /* Default Mobile: 100% */
+  flex: 0 0 100%;
+  max-width: 100%;
+}
+
+@media (min-width: 768px) {
+  /* Tablet: 50% */
+  .product-card-wrapper {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+}
+
+@media (min-width: 992px) {
+  /* Desktop: 25% */
+  .product-card-wrapper {
+    flex: 0 0 25%;
+    max-width: 25%;
+  }
+}
+
+/* Buttons */
+.center-btn { text-align: center; margin-top: 20px; }
+.btn-outline {
+  padding: 12px 30px;
+  border: 2px solid var(--dark);
+  color: var(--dark);
+  text-decoration: none;
+  font-weight: 600;
+  text-transform: uppercase;
+  transition: 0.3s;
+  display: inline-block;
+}
+.btn-outline:hover { background: var(--dark); color: var(--white); }
+
+/* --- 5. PROMO BANNER --- */
+.promo-banner {
+  background-color: var(--bg-promo);
+  color: white;
+  text-align: center;
+  padding: 100px 20px;
+  width: 100%;
+}
+
+.promo-content h2 { font-size: 3rem; margin-bottom: 15px; font-weight: 700; }
+.btn-white {
+  background: white; color: var(--bg-promo);
+  padding: 15px 35px; border-radius: 30px;
+  text-decoration: none; font-weight: bold;
+  display: inline-block; transition: 0.2s;
+}
+.btn-white:hover { transform: scale(1.05); }
+
+/* --- 6. FEATURES --- */
+.features-section {
+  display: flex;
+  justify-content: space-around;
+  border-top: 1px solid #eee;
+  padding-top: 60px;
+}
+
+.feature-item { text-align: center; }
+.feature-item .icon { font-size: 2.5rem; color: var(--bg-promo); margin-bottom: 15px; }
+.feature-item h4 { font-weight: 600; margin-bottom: 5px; }
+.feature-item p { color: var(--secondary); font-size: 0.9rem; }
+
+/* --- Animations & Media Queries --- */
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@media (max-width: 900px) {
+  .hero-slider-section { height: 60vh; }
+  .hero-content h1 { font-size: 2.5rem; }
+  .categories-section { grid-template-columns: 1fr; gap: 15px; }
+  .features-section { flex-wrap: wrap; gap: 30px; }
 }
