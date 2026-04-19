@@ -10,6 +10,8 @@ const Contact = () => {
     message: "",
   });
 
+  const [loading, setLoading] = useState(false);
+
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -17,22 +19,33 @@ const Contact = () => {
     });
   };
 
+  // 🔥 FINAL SUBMIT FIX
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
+      setLoading(true);
+
+      // ✅ FIX: match backend structure
+      const payload = {
+        name: `${formData.firstName} ${formData.lastName}`,
+        email: formData.email,
+        message: formData.message,
+      };
+
       const res = await fetch("http://localhost:5000/api/contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(payload),
       });
 
       const data = await res.json();
 
       if (data.success) {
         alert("Message sent successfully ✅");
+
         setFormData({
           firstName: "",
           lastName: "",
@@ -43,7 +56,10 @@ const Contact = () => {
         alert("Failed to send ❌");
       }
     } catch (error) {
+      console.error("❌ Error:", error);
       alert("Server error ❌");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -64,40 +80,41 @@ const Contact = () => {
           </p>
         </div>
       </section>
-      {/* OFFICE + MAP */}{" "}
+
+      {/* OFFICE */}
       <section className="office-section">
-        {" "}
         <div className="office-left">
-          {" "}
-          <h2>Our office</h2>{" "}
+          <h2>Our office</h2>
           <p>
-            {" "}
             Building No. 14 B, PATWAR BAGAN LANE,
             <br /> SEALDAH, Kolkata,
-            <br /> West Bengal 700009{" "}
-          </p>{" "}
-          <h4>Hours</h4>{" "}
+            <br /> West Bengal 700009
+          </p>
+
+          <h4>Hours</h4>
           <p>
             Monday - Friday
             <br />
             9am - 6pm
-          </p>{" "}
-          <h4>Contacts</h4>{" "}
+          </p>
+
+          <h4>Contacts</h4>
           <p>
             +91 983 077 0400
             <br />
             nswplsaha@yahoo.com
-          </p>{" "}
-        </div>{" "}
+          </p>
+        </div>
+
         <div className="office-map">
-          {" "}
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4370.078943523779!2d88.37186729999999!3d22.5751359!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a02770886ac645f%3A0xdb9dc4fb09fdfeb1!2s14%2Fb%2C%20Patwar%20Bagan%20Ln%2C%20Baithakkhana%2C%20Kolkata%2C%20West%20Bengal%20700009!5e1!3m2!1sen!2sin!4v1775720407409!5m2!1sen!2sin"
             loading="lazy"
             title="map"
-          ></iframe>{" "}
-        </div>{" "}
+          ></iframe>
+        </div>
       </section>
+
       {/* FORM */}
       <section className="form-section">
         <h2>Get in touch</h2>
@@ -139,36 +156,33 @@ const Contact = () => {
             required
           ></textarea>
 
-          <button type="submit">Send Message</button>
+          <button type="submit" disabled={loading}>
+            {loading ? "Sending..." : "Send Message"}
+          </button>
         </form>
       </section>
-      {/* TESTIMONIAL */}{" "}
+
+      {/* TESTIMONIAL */}
       <section className="testimonial">
-        {" "}
-        <h2>Here's what our customers say</h2>{" "}
+        <h2>Here's what our customers say</h2>
+
         <div className="testimonial-grid">
-          {" "}
           <div>
-            {" "}
             <p>
-              {" "}
               ”Every day, they strive to improve their service to the clients by
-              developing the right blend of technology and creativity to make
-              sure every job done is done as efficiently as possible.”{" "}
-            </p>{" "}
-            <span>- Clarice Turner</span>{" "}
-          </div>{" "}
+              developing the right blend of technology and creativity.”
+            </p>
+            <span>- Clarice Turner</span>
+          </div>
+
           <div>
-            {" "}
             <p>
-              {" "}
               ”Every day, they strive to improve their service to the clients by
-              developing the right blend of technology and creativity to make
-              sure every job done is done as efficiently as possible.”{" "}
-            </p>{" "}
-            <span>- Brian Moten</span>{" "}
-          </div>{" "}
-        </div>{" "}
+              developing the right blend of technology and creativity.”
+            </p>
+            <span>- Brian Moten</span>
+          </div>
+        </div>
       </section>
     </div>
   );

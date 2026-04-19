@@ -1,0 +1,268 @@
+/* Profile Settings Modal */
+.profile-settings-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.profile-settings-modal {
+  background: white;
+  border-radius: 20px;
+  width: 90%;
+  max-width: 480px;
+  max-height: 90vh;
+  overflow: hidden;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  animation: slideUp 0.3s ease-out;
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 28px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.modal-header h2 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  font-size: 28px;
+  color: #9ca3af;
+  cursor: pointer;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+
+.modal-close:hover {
+  background: #f1f5f9;
+  color: #111827;
+}
+
+/* Tabs */
+.settings-tabs {
+  display: flex;
+  padding: 0 28px;
+  border-bottom: 1px solid #e5e7eb;
+  gap: 20px;
+}
+
+.tab-btn {
+  padding: 16px 4px;
+  background: none;
+  border: none;
+  font-size: 15px;
+  font-weight: 500;
+  color: #6b7280;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s;
+}
+
+.tab-btn:hover {
+  color: #374151;
+}
+
+.tab-btn.active {
+  color: #6366f1;
+  border-bottom-color: #6366f1;
+}
+
+.modal-body {
+  padding: 28px;
+  max-height: calc(90vh - 180px);
+  overflow-y: auto;
+}
+
+/* Form Styles */
+.form-group {
+  margin-bottom: 24px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #374151;
+  font-size: 14px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid #e5e7eb;
+  border-radius: 10px;
+  font-size: 15px;
+  transition: all 0.2s;
+  background: #f9fafb;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #6366f1;
+  background: white;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+.form-group input.disabled-input {
+  background: #f3f4f6;
+  color: #6b7280;
+  cursor: not-allowed;
+  border-color: #d1d5db;
+}
+
+.help-text {
+  display: block;
+  margin-top: 6px;
+  font-size: 13px;
+  color: #6b7280;
+}
+
+/* Messages */
+.error-message {
+  background: #fef2f2;
+  color: #dc2626;
+  padding: 14px 18px;
+  border-radius: 10px;
+  border: 1px solid #fecaca;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+.success-message {
+  background: #f0fdf4;
+  color: #16a34a;
+  padding: 14px 18px;
+  border-radius: 10px;
+  border: 1px solid #bbf7d0;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+/* Form Actions */
+.form-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.btn-cancel {
+  flex: 1;
+  padding: 12px 20px;
+  background: white;
+  border: 2px solid #e5e7eb;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 15px;
+  color: #374151;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-cancel:hover {
+  background: #f9fafb;
+  border-color: #9ca3af;
+}
+
+.btn-save {
+  flex: 1;
+  padding: 12px 20px;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 15px;
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-save:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(99, 102, 241, 0.3);
+}
+
+/* Dropdown Info Full */
+.dropdown-info-full {
+  width: 100%;
+}
+
+.dropdown-info-full .dropdown-name {
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 4px;
+  font-size: 16px;
+}
+
+.dropdown-info-full .dropdown-email {
+  font-size: 13px;
+  color: #6b7280;
+  margin-bottom: 8px;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .profile-settings-modal {
+    width: 95%;
+    margin: 16px;
+  }
+
+  .modal-header {
+    padding: 20px;
+  }
+
+  .settings-tabs {
+    padding: 0 20px;
+  }
+
+  .modal-body {
+    padding: 20px;
+  }
+
+  .form-actions {
+    flex-direction: column;
+  }
+}

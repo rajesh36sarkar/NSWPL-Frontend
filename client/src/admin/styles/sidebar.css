@@ -1,17 +1,41 @@
-.sidebar {
-  width: 220px;
-  background: #111;
-  color: white;
-  height: 100vh;
-  padding: 20px;
-}
+import { useState } from "react";
 
-.sidebar ul {
-  list-style: none;
-  padding: 0;
-}
+const Sidebar = ({ setPage }) => {
+  const [active, setActive] = useState("products");
 
-.sidebar li {
-  margin: 20px 0;
-  cursor: pointer;
-}
+  const handleClick = (page) => {
+    setPage(page);
+    setActive(page);
+  };
+
+  return (
+    <div className="sidebar">
+      <h2>Admin Panel</h2>
+
+      <ul>
+        <li
+          className={active === "products" ? "active" : ""}
+          onClick={() => handleClick("products")}
+        >
+          Products
+        </li>
+
+        <li
+          className={active === "orders" ? "active" : ""}
+          onClick={() => handleClick("orders")}
+        >
+          Orders
+        </li>
+
+        <li
+          className={active === "messages" ? "active" : ""}
+          onClick={() => handleClick("messages")}
+        >
+          Messages
+        </li>
+      </ul>
+    </div>
+  );
+};
+
+export default Sidebar;
