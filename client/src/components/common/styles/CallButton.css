@@ -1,0 +1,70 @@
+.call-floating {
+  position: relative;
+}
+
+.call-float-btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 24px;
+  background: #E09C27;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 8px 25px rgba(224, 156, 39, 0.4);
+  transition: all 0.3s ease;
+}
+
+.call-float-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 35px rgba(224, 156, 39, 0.5);
+  background: #c4881f;
+}
+
+.call-float-btn svg {
+  font-size: 20px;
+}
+
+.call-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+}
+
+.call-btn-default {
+  background: #f3f4f6;
+  color: #1a1a2e;
+}
+
+.call-btn-primary {
+  background: linear-gradient(135deg, #E09C27, #E5CD2F);
+  color: white;
+}
+
+.call-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(224, 156, 39, 0.3);
+}
+
+@media (max-width: 768px) {
+  .call-float-btn span {
+    display: none;
+  }
+  
+  .call-float-btn {
+    padding: 12px;
+  }
+  
+  .call-float-btn svg {
+    font-size: 24px;
+  }
+}

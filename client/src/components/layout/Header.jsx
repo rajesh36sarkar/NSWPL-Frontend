@@ -1,12 +1,7 @@
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import {
-  IoSearchOutline,
-  IoCartOutline,
-  IoMenu,
-  IoClose
-} from "react-icons/io5";
-import logo from "../../assets/icons/NSWPL_Logo.png";
+import { FaFacebookF, FaInstagram, FaWhatsapp } from "react-icons/fa";
+import logoWithNSWPL from "../../assets/icons/logoWithNSWPL.png";
 import "../../styles/header.css";
 
 const Header = () => {
@@ -25,63 +20,68 @@ const Header = () => {
   return (
     <header className="site-header">
       <div className="header-container">
-
-        {/* BRAND */}
+        {/* BRAND LOGO */}
         <div className="brand">
-          <img src={logo} alt="Logo" className="brand-icon" />
-          <Link to="/" className="brand-name" onClick={closeMenu}>
-            <span className="brand-full">Netai Stationery Works</span>
-            <span className="brand-short">NSWPL</span>
+          <Link to="/" className="brand-logo" onClick={closeMenu}>
+            <img src={logoWithNSWPL} alt="NSWPL Logo" />
           </Link>
         </div>
 
-        {/* NAV */}
+        {/* NAVIGATION - 5 Links */}
         <nav className={`nav ${menuOpen ? "open" : ""}`}>
-
           <NavLink to="/" onClick={closeMenu}>Home</NavLink>
-
-          {/* Pages */}
-          <div className="nav-item dropdown">
-            <span onClick={() => toggleDropdown("pages")}>Pages</span>
-
-            <div className={`dropdown-menu ${openDropdown === "pages" ? "show" : ""}`}>
-              <NavLink to="/about" onClick={closeMenu}>About</NavLink>
-              <NavLink to="/team" onClick={closeMenu}>Team</NavLink>
-              <NavLink to="/faq" onClick={closeMenu}>FAQ</NavLink>
-            </div>
-          </div>
-
-          {/* Shop */}
-          <div className="nav-item dropdown">
-            <span onClick={() => toggleDropdown("shop")}>Shop</span>
-
-            <div className={`dropdown-menu ${openDropdown === "shop" ? "show" : ""}`}>
-              <NavLink to="/shop" onClick={closeMenu}>Shop</NavLink>
-              <NavLink to="/categories" onClick={closeMenu}>Categories</NavLink>
-            </div>
-          </div>
-
+          <NavLink to="/about" onClick={closeMenu}>About</NavLink>
+          <NavLink to="/services" onClick={closeMenu}>Services</NavLink>
+          <NavLink to="/products" onClick={closeMenu}>Products</NavLink>
           <NavLink to="/contact" onClick={closeMenu}>Contact</NavLink>
-
         </nav>
 
         {/* ACTIONS */}
         <div className="header-actions">
-          <button className="icon-btn"><IoSearchOutline /></button>
+          {/* Social Icons */}
+          <div className="header-social">
+            <a
+              href="https://www.facebook.com/share/1HxoyMiKf8/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="social-link facebook"
+              aria-label="Facebook"
+            >
+              <FaFacebookF />
+            </a>
+            <a
+              href="https://www.instagram.com/netaistationery?igsh=em0xajE5a2FkbmF2"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="social-link instagram"
+              aria-label="Instagram"
+            >
+              <FaInstagram />
+            </a>
+            <a
+              href="https://wa.me/919830770400?text=Hi%2C%20I%20would%20like%20to%20talk%20with%20you" 
+              target="_blank"
+              rel="noopener noreferrer"
+              className="social-link whatsapp"
+              aria-label="WhatsApp"
+            >
+              <FaWhatsapp />
+            </a>
+          </div>
 
-          <Link to="/cart" className="icon-btn">
-            <IoCartOutline />
-            <span className="cart-badge">2</span>
-          </Link>
-
+          {/* Modern Animated Hamburger Menu */}
           <button
-            className="menu-toggle"
+            className={`menu-toggle ${menuOpen ? "open" : ""}`}
             onClick={() => setMenuOpen(!menuOpen)}
+            aria-label="Menu"
           >
-            {menuOpen ? <IoClose /> : <IoMenu />}
+            <div className="hamburger">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
           </button>
         </div>
-
       </div>
     </header>
   );

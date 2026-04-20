@@ -19,6 +19,138 @@
   gap: 8px;
 }
 
+/* Message Badges */
+.message-badges {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.unread-badge {
+  background: #E09C27;
+  color: white;
+  padding: 2px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.replied-badge {
+  background: #10b981;
+  color: white;
+  padding: 2px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.unread-count {
+  color: #E09C27;
+  font-weight: 600;
+}
+
+/* Error Container */
+.error-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
+}
+
+.error-message {
+  text-align: center;
+  padding: 40px;
+  background: #fef2f2;
+  border-radius: 16px;
+  border: 1px solid #fecaca;
+}
+
+.error-icon {
+  font-size: 48px;
+  display: block;
+  margin-bottom: 16px;
+}
+
+.retry-btn {
+  margin-top: 20px;
+  padding: 10px 24px;
+  background: #E09C27;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.retry-btn:hover {
+  background: #c4881f;
+}
+
+/* Reply Section */
+.reply-section {
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.reply-section h4 {
+  margin-bottom: 16px;
+  color: #1a1a2e;
+}
+
+.reply-subject {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  font-size: 14px;
+}
+
+.reply-textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  resize: vertical;
+  font-family: inherit;
+  font-size: 14px;
+}
+
+.reply-btn {
+  margin-top: 12px;
+  padding: 12px 24px;
+  background: linear-gradient(135deg, #E09C27, #E5CD2F);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  width: 100%;
+}
+
+.reply-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(224, 156, 39, 0.3);
+}
+
+.reply-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Detail links */
+.detail-email a,
+.detail-phone a {
+  color: #E09C27;
+  text-decoration: none;
+}
+
+.detail-email a:hover,
+.detail-phone a:hover {
+  text-decoration: underline;
+}
+
 .messages-container {
   display: flex;
   gap: 24px;

@@ -1,0 +1,35 @@
+/* Floating Contact Buttons */
+.floating-buttons {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Adjust individual button positions */
+.floating-buttons .email-floating,
+.floating-buttons .whatsapp-fixed,
+.floating-buttons .call-floating {
+  position: relative !important;
+  bottom: auto !important;
+  right: auto !important;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .floating-buttons {
+    bottom: 20px;
+    right: 20px;
+    gap: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .floating-buttons {
+    bottom: 15px;
+    right: 15px;
+  }
+}
