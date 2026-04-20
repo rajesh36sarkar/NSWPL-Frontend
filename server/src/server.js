@@ -15,13 +15,13 @@ const startServer = async () => {
 
     const server = app.listen(PORT, () => {
       console.log(`🚀 Server running in ${NODE_ENV} mode on port ${PORT}`);
-      console.log(`📍 Health check: http://localhost:${PORT}/health`);
+      console.log(`📍 Health check: /health`);
     });
 
     // Graceful Shutdown
-    const gracefulShutdown = async (signal) => {
+    const gracefulShutdown = (signal) => {
       console.log(`\n🛑 Received ${signal}. Shutting down gracefully...`);
-      
+
       server.close(() => {
         console.log("✅ HTTP server closed.");
         process.exit(0);
@@ -38,14 +38,12 @@ const startServer = async () => {
 
     process.on("unhandledRejection", (err) => {
       console.error(`❌ Unhandled Rejection: ${err.message}`);
-      console.error(err.stack);
       server.close(() => process.exit(1));
     });
 
     process.on("uncaughtException", (err) => {
       console.error(`❌ Uncaught Exception: ${err.message}`);
-      console.error(err.stack);
-      server.close(() => process.exit(1));
+      process.exit(1);
     });
 
   } catch (error) {

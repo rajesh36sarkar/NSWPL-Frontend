@@ -25,18 +25,26 @@ app.use(
   })
 );
 
-// CORS
-const corsOrigins = process.env.CLIENT_URL 
-  ? [process.env.CLIENT_URL, process.env.CLIENT_URL_PROD].filter(Boolean)
-  : ["http://localhost:5173", "http://localhost:3000"];
+// ✅ CORS FIX (IMPORTANT)
+const corsOrigins = [
+  "http://localhost:5173",
+  "http://localhost:3000",
+  process.env.CLIENT_URL,
+  process.env.CLIENT_URL_PROD,
+].filter(Boolean);
 
 app.use(
   cors({
-    origin: corsOrigins,
+    origin: function (origin, callback) {
+      if (!origin) return callback(null, true);
+
+      if (corsOrigins.includes(origin)) {
+        return callback(null, true);
+      } else {
+        return callback(new Error("Not allowed by CORS"));
+      }
+    },
     credentials: true,
-    methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
-    allowedHeaders: ["Content-Type", "Authorization", "X-Request-ID"],
-    exposedHeaders: ["X-Request-ID"],
   })
 );
 
@@ -56,15 +64,17 @@ app.use(express.urlencoded({ extended: true, limit: "10mb" }));
 
 // Data Sanitization
 app.use(mongoSanitize());
-app.use(hpp({
-  whitelist: ["category", "sort", "page", "limit", "search", "status"],
-}));
+app.use(
+  hpp({
+    whitelist: ["category", "sort", "page", "limit", "search", "status"],
+  })
+);
 
 // Compression
 app.use(compression());
 
 // Logging
-if (process.env.NODE_ENV === "development") {
+if (!isProduction) {
   morgan.token("id", (req) => req.id || "-");
   app.use(morgan(":id :method :url :status :response-time ms"));
 } else {
@@ -73,6 +83,11 @@ if (process.env.NODE_ENV === "development") {
 
 // Routes
 app.use("/api", routes);
+
+// Root route (for testing)
+app.get("/", (req, res) => {
+  res.send("API is running...");
+});
 
 // Health check
 app.get("/health", (req, res) => {
