@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { FaSearch, FaTimes, FaBox, FaLayerGroup, FaArrowRight, FaStar, FaCheckCircle } from "react-icons/fa";
-import { motion, AnimatePresence } from "framer-motion";
+import {  AnimatePresence } from "framer-motion";
 import axios from "axios";
 import Loader from "../components/common/Loader";
 import "../styles/productsPage.css";
