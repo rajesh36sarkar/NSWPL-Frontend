@@ -1,0 +1,28 @@
+{
+  "name": "Netai Stationery Works",
+  "short_name": "NSWPL",
+  "description": "Premium Notebooks & Custom Stationery Manufacturer",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#E09C27",
+  "background_color": "#faf7f2",
+  "icons": [
+    {
+      "src": "/src/assets/icons/NSWPL_Logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/src/assets/icons/NSWPL_Logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["business", "shopping", "productivity"],
+  "lang": "en-IN",
+  "dir": "ltr",
+  "prefer_related_applications": false
+}
